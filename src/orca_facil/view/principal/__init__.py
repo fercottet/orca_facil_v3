@@ -40,23 +40,24 @@ class JanelaPrincipal(ctk.CTk):
         print("[VIEW] Inicialização: 1. Chamando o construtor da classe-pai - super().__init__")
 
         # 2. Instancia as classes de configuração
+        print("{VIEW] 2. Instanciando classes de configuração.")
 
         # 2.1. Armazena o objeto de configuração de interface (tema, fontes, cores).
+        print("[VIEW] Inicialização: 2.1. Armazenando objeto de configuração de interface (InterfaceVisual)")
         self.interface: InterfaceVisual = interface  # Com notação de tipagem - InterfaceVisual
         """
         <variável>: TIPO = <valor>
         Essa linha chama o construtor da classe pai (CTk) e passa para ela os mesmos argumentos recebidos aqui.
         """
-        print("[VIEW] Inicialização: 2.1. Armazenando objeto de configuração de interface (InterfaceVisual)")
 
         # 2.2. Instancia as configurações da Janela Principal
-        self.janela: Janelas = janela  # Com notação de tipagem - Janelas
         print("[VIEW] Inicialização: 2.2. Instanciando as configurações da janela principal")
+        self.janela: Janelas = janela  # Com notação de tipagem - Janelas
 
         # 3. Configurações globais da Janela Principal
+        print("[VIEW] Inicialização: 3. Setando configurações globais: Título e dimensões da janela principal")
         self.title("Orça Fácil 3.0")  # Título da janela (parte superior)
         self.geometry(self.interface.janelas.dimensao_principal)  # Dimensões (em pixels) da Janela - Largura x Altura.
-        print("[VIEW] Inicialização: 3. Setando configurações globais: Título e dimensões da janela principal")
 
         # 4. Configurar estilos personalizados
         self._configurar_estilos()
@@ -72,12 +73,13 @@ class JanelaPrincipal(ctk.CTk):
         """
 
         # 1. Define o modo de cor do programa (Light, Dark ou System)
-        ctk.set_appearance_mode(self.janela.modo)
         print("[VIEW] Aplicando Configurações: Modo de Cor")
+        ctk.set_appearance_mode(self.janela.modo)
 
         # 2. Define o tema de cores do programa
-        ctk.set_default_color_theme("green")
         print("[VIEW] Aplicando Configurações: Tema de cores")
+        ctk.set_default_color_theme("green")
+
 
     # WIDGETS
     def _criar_widgets(self) -> None:
