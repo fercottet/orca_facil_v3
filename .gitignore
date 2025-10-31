@@ -1,0 +1,26 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+
+# PyCharm
+.idea/
+
+# Logs e temporários
+*.log
+*.tmp
+
+# PDFs, orçamentos gerados, etc
+*.pdf
+*.xlsx
+*.json
+
+# Configurações específicas
+*.ini
+*.cfg
+# created by virtualenv automatically
+.venv/Lib

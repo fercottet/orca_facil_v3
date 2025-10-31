@@ -1,0 +1,23 @@
+"""
+Módulo de inicialização.
+Responsabilidade: Instanciação do Controller e inicialização da interface por meio dele (Main → Controller → View)
+"""
+
+# Importa a classe Controller responsável por gerenciar o fluxo da aplicação
+from src.orca_facil.controller.controller import Controller
+""" 'from' <pasta> → <pasta> → <pasta> → <módulo> 'import' <Classe> """
+
+
+def main() -> None:
+    """
+    Instancia o Controller, inicializa a interface e o loop principal do programa.
+    """
+
+    controller = Controller()  # Instancia o Controller (<variável> = <Classe> importada
+    print("[MAIN] Controller instanciado.")
+    controller.iniciar()  # Chama o metodo de inicialização do programa, que cria a janela principal e os seus widgets
+    print("[MAIN] Finalizando inicialização.")
+
+if __name__ == "__main__":  # Garante que "main()" só será executado se for rodado diretamente (não quando importado)
+    print("[MAIN] Inicializando...")
+    main()  # Executa a aplicação
