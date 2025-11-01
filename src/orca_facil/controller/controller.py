@@ -37,7 +37,7 @@ class Controller:
         """
         Inicia a aplicação e aplica as configurações visuais.
         """
-        print("[CONTROLLER] Inicializando Controlador.")
+        print("[CONTROLLER] Iniciando Controlador.")
 
         # Instancia a Janela Principal (View)
         print("[CONTROLLER] Instanciando View - JanelaPrincipal.")
@@ -49,7 +49,7 @@ class Controller:
         print("[CONTROLLER] Tema aplicado.")
 
         # Inicia o loop principal do programa com as configurações aplicadas
-        print("[CONTROLLER] Inicialização concluída!.")
+        print("[CONTROLLER] Inicialização concluída!")
         print("[CONTROLLER] Executando aplicação.")
         print("\n========== - ========== - ========== - ==========\n")
         self.view.mainloop()

@@ -6,6 +6,7 @@ Responsabilidade: Criar a Janela Principal do programa e organizar os widgets ne
 import customtkinter as ctk
 from src.configs.interface import Janelas, InterfaceVisual
 
+
 class JanelaPrincipal(ctk.CTk):
     """
     Recebe uma instância de InterfaceVisual com as configurações (tema, fontes, cores).
@@ -26,7 +27,7 @@ class JanelaPrincipal(ctk.CTk):
         :param kwargs: Argumentos nomeados variáveis opcionais passados à classe-pai CTk. Empacota tudo num dicionário.
 
         Juntos, *args e **kwargs tornam o construtor flexível e expansível.
-        Fundamental quando herdamos classes que têm muitos parâmetros opcionais, como tkinter e customtkinter.
+        Fundamental quando herdamos classes com muitos parâmetros opcionais, como tkinter e customtkinter.
 
         A classe JanelaPrincipal herda de ctk.CTk.
         Como CTk aceita muitos parâmetros opcionais (como fg_color, width, height, etc.),
@@ -40,7 +41,7 @@ class JanelaPrincipal(ctk.CTk):
         print("[VIEW] Inicialização: 1. Chamando o construtor da classe-pai - super().__init__")
 
         # 2. Instancia as classes de configuração
-        print("{VIEW] 2. Instanciando classes de configuração.")
+        print("{VIEW] Inicialização: 2. Instanciando classes de configuração.")
 
         # 2.1. Armazena o objeto de configuração de interface (tema, fontes, cores).
         print("[VIEW] Inicialização: 2.1. Armazenando objeto de configuração de interface (InterfaceVisual)")
@@ -73,13 +74,12 @@ class JanelaPrincipal(ctk.CTk):
         """
 
         # 1. Define o modo de cor do programa (Light, Dark ou System)
-        print("[VIEW] Aplicando Configurações: Modo de Cor")
+        print("[VIEW] Aplicando Configuração: Modo de cor")
         ctk.set_appearance_mode(self.janela.modo)
 
         # 2. Define o tema de cores do programa
-        print("[VIEW] Aplicando Configurações: Tema de cores")
+        print("[VIEW] Aplicando Configuração: Tema de cores")
         ctk.set_default_color_theme("green")
-
 
     # WIDGETS
     def _criar_widgets(self) -> None:
@@ -107,4 +107,3 @@ class JanelaPrincipal(ctk.CTk):
 
         # aqui vamos iterar por widgets ou reconfigurar o que for necessário
         pass
-
