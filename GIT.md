@@ -20,7 +20,7 @@ O parâmetro -u cria o vínculo entre o branch local e o remoto.
 ## Para enviar um commit (alteração) ao GitHub (histórico de mudanças):
 > git add . \
 > git commit -m " Uma frase que resuma das mudanças " \
-> git pull --rebase origin main \
+> git pull --rebase origin main (ou somente 'git pull' se tiver feito código abaixo) \
 > git push origin main
 
 O '--rebase' mantém o histórico linear e evita “commits de merge” desnecessários.
