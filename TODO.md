@@ -1,15 +1,19 @@
-### Para criar o arquivo requetiments.txt automaticamente: 
+### Para criar o arquivo requeriments.txt automaticamente: 
 pip freeze | grep -v "pkg-resources" > requirements.txt
 
 
-# A fazer
+# A FAZER
+
+## No View
+[ ] - Centralizar Janela na tela
+[ ] - Tirar opção de Maximização / Bloquear redimensionamento
+[ ] - Colocar ícone na janela
+
+
+# PARA CONSERTAR (Bugs):
 
 
 
-# Para consertar (Bugs)
-
-
-
-# Ideias futuras
+# IDEIAS FUTURAS:
 
 

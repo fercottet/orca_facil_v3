@@ -10,7 +10,7 @@ from dataclasses import dataclass, field
 class Janelas:
     """Define as características da janela principal e modais do programa."""
 
-    modo: str = field(default="light")  # 'light' (claro) ou 'dark' (escuro)
+    modo: str = field(default="dark")  # 'light' (claro) ou 'dark' (escuro)
 
     # DIMENSÕES
     largura_principal: int = 1440

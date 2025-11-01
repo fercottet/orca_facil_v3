@@ -7,6 +7,8 @@ Responsabilidade: Instanciação do Controller e inicialização da interface po
 from src.orca_facil.controller.controller import Controller
 """ 'from' <pasta> → <pasta> → <pasta> → <módulo> 'import' <Classe> """
 
+def console(mensagem) -> None:
+    print(f"\033[35m[MAIN] {mensagem}.\033[0m")  # Print em MAGENTA no console
 
 def main() -> None:
     """
@@ -14,10 +16,12 @@ def main() -> None:
     """
 
     controller = Controller()  # Instancia o Controller (<variável> = <Classe> importada
-    print("[MAIN] Controller instanciado.")
+    console("Controller instanciado")
+
+    console("Iniciando processo de carregamento da Janela Principal")
     controller.iniciar()  # Chama o metodo de inicialização do programa, que cria a janela principal e os seus widgets
-    print("[MAIN] Finalizando inicialização.")
+
 
 if __name__ == "__main__":  # Garante que "main()" só será executado se for rodado diretamente (não quando importado)
-    print("[MAIN] Inicializando...")
+    console("Inicializando..")
     main()  # Executa a aplicação

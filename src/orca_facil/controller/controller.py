@@ -7,6 +7,9 @@ controlando o fluxo da aplicação (inicialização, comandos e eventos).
 from src.orca_facil.view.principal import JanelaPrincipal
 from src.configs.interface import InterfaceVisual, Janelas, Cores, Fontes
 
+def console(mensagem) -> None:
+    print(f"\033[34m[CONTROLLER] {mensagem}.\033[0m")  # Print em AZUL no console
+
 class Controller:
     """
     Classe principal do Controller.
@@ -37,19 +40,19 @@ class Controller:
         """
         Inicia a aplicação e aplica as configurações visuais.
         """
-        print("[CONTROLLER] Iniciando Controlador.")
+        console("Iniciando Controlador")
 
         # Instancia a Janela Principal (View)
-        print("[CONTROLLER] Instanciando View - JanelaPrincipal.")
+        console("Instanciando View - JanelaPrincipal")
         self.view = JanelaPrincipal(interface=self.interface, janela=self.janelas)
-        print("[CONTROLLER] JanelaPrincipal instanciada.")
+        console("JanelaPrincipal instanciada")
 
         # Aplica a configuração de cores e o tema ao programa
         self.view.aplicar()
-        print("[CONTROLLER] Tema aplicado.")
+        console("Tema aplicado")
 
         # Inicia o loop principal do programa com as configurações aplicadas
-        print("[CONTROLLER] Inicialização concluída!")
-        print("[CONTROLLER] Executando aplicação.")
+        console("Inicialização concluída")
+        console("Executando aplicação")
         print("\n========== - ========== - ========== - ==========\n")
         self.view.mainloop()
