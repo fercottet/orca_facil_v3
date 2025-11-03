@@ -18,6 +18,7 @@ class Janelas:
 
     @property
     def dimensao_principal(self) -> str:
+        """Obtém a dimensão da Janela Principal"""
         return f"{self.largura_principal}x{self.altura_principal}"
 
 
@@ -42,6 +43,7 @@ class Fontes:
 
     @property
     def fonte_padrao(self) -> tuple:
+        """Configura o padrão de tipo, tamanho e negrito da fonte do programa"""
         return self.tipo_padrao, self.tamanho_padrao, self.negrito_padrao
 
     # TÍTULO
@@ -51,6 +53,7 @@ class Fontes:
 
     @property
     def fonte_titulo(self) -> tuple:
+        """Configura o tipo, tamanho e negrito da fonte para títulos"""
         return self.tipo_titulo, self.tamanho_titulo, self.negrito_titulo
 
     # BOTÕES
@@ -60,6 +63,7 @@ class Fontes:
 
     @property
     def fonte_botao(self) -> tuple:
+        """Padroniza tipo, tamanho e negrito dos botões"""
         return self.tipo_botao, self.tamanho_botao, self.negrito_botao
 
 @dataclass
