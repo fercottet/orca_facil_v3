@@ -5,9 +5,14 @@ Responsabilidade: Criar a Janela Principal do programa e organizar os widgets ne
 
 import customtkinter as ctk
 from src.configs.interface import Janelas, InterfaceVisual
+import os
+import sys
 
 def console(mensagem) -> None:
     print(f"\033[33m[VIEW] {mensagem}.\033[0m")  # Print em AMARELO no console
+def caminho_base():
+    pasta_view = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.normpath(os.path.join(pasta_view, "..", "..", ".."))
 
 class JanelaPrincipal(ctk.CTk):
     """
@@ -37,7 +42,6 @@ class JanelaPrincipal(ctk.CTk):
         sem precisar declarar todos manualmente.
         """
         console("Iniciando Módulo View. Método '__init__()' foi chamado")
-        # print("\033[33m[VIEW] Iniciando Módulo View. Método '__init__()' foi chamado.\033[0m")
 
         # 1. Chama o construtor da classe-pai (CTk). Sem ele só teríamos uma classe e não uma Janela Principal
         super().__init__(*args, **kwargs)  # Aplica eventuais parâmetros herdados
@@ -60,6 +64,9 @@ class JanelaPrincipal(ctk.CTk):
 
         # 3. Configurações globais da Janela Principal
         console("Inicialização: 3. Setando configurações globais da janela principal")
+        self.resizable(False, False)
+        caminho_icone = os.path.join(caminho_base(), "assets", "icon", "icone.ico")
+        self.iconbitmap(caminho_icone)
 
         # 3.1. Define o título da Janela Principal (parte superior)
         console("Inicialização: 3.1. Definindo título da Janela Principal")
@@ -105,7 +112,7 @@ class JanelaPrincipal(ctk.CTk):
         # 4. Calcula a posição central
         console("Inicialização - Centralização: Calculando posição central")
         pos_x = (largura_tela - largura_corrigida) // 2
-        pos_y = (altura_tela - altura_corrigida) // 2
+        pos_y = (altura_tela - altura_corrigida) // 3
 
         return f"{pos_x}+{pos_y}"
     def aplicar(self) -> None:
