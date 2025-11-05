@@ -27,7 +27,7 @@ class Botao(BaseWidget, CTkButton):
             **kwargs: Parâmetros opcionais adicionais do CTkButton.
         """
 
-        console("Botão - Classe 'Botao' iniciada")
+        console("Botão: Classe 'Botao' iniciada")
 
         # 1. Inicialize as heranças
         BaseWidget.__init__(self, interface)

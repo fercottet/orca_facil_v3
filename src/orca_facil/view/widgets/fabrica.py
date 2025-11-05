@@ -35,7 +35,7 @@ class FabricaWidgets:
         :param: **kwargs: Parâmetros adicionais repassados ao Botao (como corner_radius, etc.).
         """
 
-        console(f" - Fábrica: Criando botão {texto}")
+        console(f"Fábrica: Criando botão {texto}")
 
         # 1. Cria o botão
         botao = Botao(master, texto, interface, width=largura, height=altura, comando=comando, **kwargs)
