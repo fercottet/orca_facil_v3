@@ -54,21 +54,3 @@ class BaseWidget(ABC):
         Pode ser sobrescrito quando necessário.
         """
         pass
-
-
-class TemaWidget:
-    """
-    Classe base para todos os widgets personalizados.
-
-    Oferece acesso às configurações visuais definidas em InterfaceVisual
-    e métodos auxiliares para aplicar estilos consistentes.
-    """
-
-    def __init__(self, interface: InterfaceVisual) -> None:
-        """
-        Classe Visual.
-        Inicializa o widget temático base.
-
-        :param interface: Instância de InterfaceVisual contendo cores, fontes e estilos do programa.
-        """
-        self.interface = interface

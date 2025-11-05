@@ -5,7 +5,7 @@ Responsabilidade: Criar a Janela Principal do programa e organizar os widgets ne
 
 import customtkinter as ctk
 from src.configs.interface import Janelas, InterfaceVisual
-from src.orca_facil.view.widgets.botao import Botao
+from src.orca_facil.view.widgets.fabrica import FabricaWidgets
 import os
 import sys
 
@@ -87,7 +87,7 @@ class JanelaPrincipal(ctk.CTk):
         self._configurar_estilos()
 
         # 5. Criar widgets
-        self._criar_widgets()
+        self._instanciar_widgets()
 
     # CONFIGURAÇÕES
     def obter_dpi_sistema(self) -> float:
@@ -97,7 +97,6 @@ class JanelaPrincipal(ctk.CTk):
         dpi = self.winfo_fpixels('1i')  # converte "1i" (1 polegada) em pixels reais
 
         return dpi / 96  # 96 dpi = escala 100% - padrão do Windows
-
     def centralizar(self) -> str:
         """Centralizada a Janela Principal na tela"""
 
@@ -121,7 +120,6 @@ class JanelaPrincipal(ctk.CTk):
         pos_y = (altura_tela - altura_corrigida) // 3
 
         return f"{pos_x}+{pos_y}"
-
     def aplicar(self) -> None:
         """
         Usar as informações de 'Configs/interface.py' para configurar o tema global
@@ -137,17 +135,20 @@ class JanelaPrincipal(ctk.CTk):
         ctk.set_default_color_theme("green")
 
     # WIDGETS
-    def _criar_widgets(self) -> None:
+    def _instanciar_widgets(self) -> None:
         """
         Metodo Privado.
         Cria e posiciona widgets principais da janela.
         """
-        self.botao_teste_1 = Botao(self, "Teste", interface=self.interface)
-        self.botao_teste_1.pack(pady=20)
 
-        self.botao_teste_2 = Botao(self, "Teste", interface=self.interface)
-        self.botao_teste_2.pack(pady=20)
-        pass
+        # BOTÕES
+        self.botao_teste = FabricaWidgets.criar_botao(
+            master=self,
+            texto="Botão de Teste",
+            interface=self.interface,
+            comando=lambda: print("Botão clicado!"),
+            x=100, y=100,
+        )
 
     # ESTILOS
     def _configurar_estilos(self) -> None:
@@ -157,7 +158,6 @@ class JanelaPrincipal(ctk.CTk):
         """
 
         pass
-
     def atualizar_estilos(self) -> None:
         """
         Metodo público.
