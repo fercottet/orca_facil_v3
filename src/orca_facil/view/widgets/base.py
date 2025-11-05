@@ -14,7 +14,7 @@ from abc import ABC, abstractmethod
 
 
 def console(mensagem) -> None:
-    print(f"\033[36m[WIDGETS] {mensagem}.\033[0m")  # Print em CIANO no console
+    print(f"\033[96m[WIDGETS] {mensagem}.\033[0m")  # Print em CIANO no console
 
 class BaseWidget(ABC):
     """

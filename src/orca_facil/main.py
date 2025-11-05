@@ -8,7 +8,7 @@ from src.orca_facil.controller.controller import Controller
 """ 'from' <pasta> → <pasta> → <pasta> → <módulo> 'import' <Classe> """
 
 def console(mensagem) -> None:
-    print(f"\033[35m[MAIN] {mensagem}.\033[0m")  # Print em MAGENTA no console
+    print(f"\033[95m[MAIN] {mensagem}.\033[0m")  # Print em MAGENTA no console
 
 def main() -> None:
     """

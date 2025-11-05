@@ -11,7 +11,7 @@ import sys
 
 
 def console(mensagem) -> None:
-    print(f"\033[33m[VIEW] {mensagem}.\033[0m")  # Print em AMARELO no console
+    print(f"\033[93m[VIEW] {mensagem}.\033[0m")  # Print em AMARELO no console
 
 
 def caminho_base():

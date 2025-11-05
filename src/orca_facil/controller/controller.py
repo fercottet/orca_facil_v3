@@ -8,7 +8,7 @@ from src.orca_facil.view.principal import JanelaPrincipal
 from src.configs.interface import InterfaceVisual, Janelas, Cores, Fontes, Gerais
 
 def console(mensagem) -> None:
-    print(f"\033[34m[CONTROLLER] {mensagem}.\033[0m")  # Print em AZUL no console
+    print(f"\033[94m[CONTROLLER] {mensagem}.\033[0m")  # Print em AZUL no console
 
 class Controller:
     """
