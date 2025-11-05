@@ -142,8 +142,11 @@ class JanelaPrincipal(ctk.CTk):
         Metodo Privado.
         Cria e posiciona widgets principais da janela.
         """
-        self.botao_teste = Botao(self, "Teste", interface=self.interface)
-        self.botao_teste.pack(pady=20)
+        self.botao_teste_1 = Botao(self, "Teste", interface=self.interface)
+        self.botao_teste_1.pack(pady=20)
+
+        self.botao_teste_2 = Botao(self, "Teste", interface=self.interface)
+        self.botao_teste_2.pack(pady=20)
         pass
 
     # ESTILOS

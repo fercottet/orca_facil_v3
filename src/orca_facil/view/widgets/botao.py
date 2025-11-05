@@ -27,7 +27,7 @@ class Botao(BaseWidget, CTkButton):
             **kwargs: Parâmetros opcionais adicionais do CTkButton.
         """
 
-        console("[WIDGET] Botão - Classe 'Botao' iniciada.")
+        console("Botão - Classe 'Botao' iniciada")
 
         # 1. Inicialize as heranças
         BaseWidget.__init__(self, interface)
@@ -48,7 +48,7 @@ class Botao(BaseWidget, CTkButton):
         Pode ser chamado quando o tema é alterado em tempo de execução.
         """
 
-        console("[WIDGET] Botão - Aplicando estilo.")
+        console("Botão - Aplicando estilo")
 
         self.configure(
             fg_color=self.interface.cores.verde_escuro,
