@@ -66,6 +66,12 @@ class Fontes:
         """Padroniza tipo, tamanho e negrito dos botões"""
         return self.tipo_botao, self.tamanho_botao, self.negrito_botao
 
+
+@dataclass
+class Gerais:
+    """ Define outras características dos widgets."""
+    raio_canto = 10
+
 @dataclass
 class InterfaceVisual:
     """
@@ -83,3 +89,4 @@ class InterfaceVisual:
     janelas: Janelas
     cores: Cores
     fontes: Fontes
+    gerais: Gerais

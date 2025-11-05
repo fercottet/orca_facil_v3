@@ -10,30 +10,43 @@ Os componentes visuais (BotaoPadrao, LabelTitulo, etc.) é que herdarão tanto d
 """
 
 from src.configs.interface import InterfaceVisual  # e aplica as cores e fontes vindas de InterfaceVisual
+from abc import ABC, abstractmethod
 
 
-class BaseWidget:
+def console(mensagem) -> None:
+    print(f"\033[35m[CONTROLLER] {mensagem}.\033[0m")  # Print em CIANO no console
+
+class BaseWidget(ABC):
     """
     Classe Estrutural Abstrata (serve como modelo, não para uso direto).
     Padroniza como os widgets são criados e gerenciados.
-    Classe base para qualquer widgets do projeto.
+
+    Fornece a estrutura mínima que todos widgets devem seguir:
+      - Guardar a instância de InterfaceVisual (com tema, fontes, cores)
+      - Implementar o metodo obrigatório aplicar_estilo(), responsável por
+        configurar o estilo visual do widget conforme o tema atual.
+
+    Essa classe não herda de customtkinter (CTk), pois serve como uma
+    camada puramente lógica — uma "interface" para widgets visuais.
+
+    Herdar de ABC torna a classe abstrata, impedindo que ela seja instanciada diretamente.
+    Só subclasses que implementarem aplicar_estilo() poderão ser criadas.
     """
     def __init__(self, interface: InterfaceVisual) -> None:
+        """
+        :param interface: Objeto de InterfaceVisual contendo configurações visuais (cores, fontes, etc.).
+        """
         self.interface = interface
 
+    @abstractmethod
     def aplicar_estilo(self) -> None:
         """
-        Metodo genérico para aplicar cores, fontes e dimensões do tema atual.
-        Deve ser sobrescrito nas subclasses.
-        """
+        Metodo abstrato que cada widget deve implementar.
+        Define como o widget aplica as suas cores, fontes e demais estilos visuais.
 
+        Ao herdar BaseWidget, o widget é obrigado a sobrescrever este metodo.
         """
-        Se alguém tentar instanciar ou usar aplicar_estilo() sem sobrescrever, o Python avisará.
-        É uma forma simples de garantir que quem herdar da classe obrigatoriamente defina esse método
-        'raise NotImplementedError' é um “pass" com alarme. Protege de bugs silenciosos.
-        """
-        raise NotImplementedError("Subclasses devem implementar 'aplicar_estilo'.")
-
+        pass
 
     def atualizar(self) -> None:
         """

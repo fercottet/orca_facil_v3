@@ -5,14 +5,19 @@ Responsabilidade: Criar a Janela Principal do programa e organizar os widgets ne
 
 import customtkinter as ctk
 from src.configs.interface import Janelas, InterfaceVisual
+from src.orca_facil.view.widgets.botao import Botao
 import os
 import sys
 
+
 def console(mensagem) -> None:
     print(f"\033[33m[VIEW] {mensagem}.\033[0m")  # Print em AMARELO no console
+
+
 def caminho_base():
     pasta_view = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
     return os.path.normpath(os.path.join(pasta_view, "..", "..", ".."))
+
 
 class JanelaPrincipal(ctk.CTk):
     """
@@ -92,6 +97,7 @@ class JanelaPrincipal(ctk.CTk):
         dpi = self.winfo_fpixels('1i')  # converte "1i" (1 polegada) em pixels reais
 
         return dpi / 96  # 96 dpi = escala 100% - padrão do Windows
+
     def centralizar(self) -> str:
         """Centralizada a Janela Principal na tela"""
 
@@ -115,6 +121,7 @@ class JanelaPrincipal(ctk.CTk):
         pos_y = (altura_tela - altura_corrigida) // 3
 
         return f"{pos_x}+{pos_y}"
+
     def aplicar(self) -> None:
         """
         Usar as informações de 'Configs/interface.py' para configurar o tema global
@@ -135,7 +142,8 @@ class JanelaPrincipal(ctk.CTk):
         Metodo Privado.
         Cria e posiciona widgets principais da janela.
         """
-
+        self.botao_teste = Botao(self, "Teste", interface=self.interface)
+        self.botao_teste.pack(pady=20)
         pass
 
     # ESTILOS
