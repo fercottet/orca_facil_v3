@@ -85,7 +85,7 @@ class Tema:
     cor = Cores()
 
     # Cria a lista de temas disponíveis
-    lista_tema: list[str] = field(default_factory=lambda: ["Verde", "Azul", "Roxo"])
+    lista_tema: list[str] = field(default_factory=lambda: ["Azul", "Verde", "Roxo"])
 
     # Define o tema atual
     tema_atual: str = "Verde"

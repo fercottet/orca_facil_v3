@@ -6,7 +6,6 @@ Responsabilidade: Criar a Janela Principal do programa e organizar os widgets ne
 import customtkinter as ctk
 from src.configs.interface import Janelas, InterfaceVisual
 from src.orca_facil.view.widgets.fabrica import FabricaWidgets
-from src.configs.interface import Tema
 import os
 import sys
 
@@ -69,8 +68,7 @@ class JanelaPrincipal(ctk.CTk):
         self.janela: Janelas = janela  # Com notação de tipagem - Janelas
 
         # 3. Instancia o tema do programa
-        self.tema = Tema()
-        console("Inicialização: 3. Instanciando classe temática")
+        self.interface.tema.aplicar_tema(self.interface.tema.tema_atual)
 
         # 4. Configurações globais da Janela Principal
         console("Inicialização: 4. Setando configurações globais da janela principal")
@@ -89,6 +87,7 @@ class JanelaPrincipal(ctk.CTk):
         self.geometry(f"{dimensao}+{posicao_central}")
 
         # 5. Criar widgets
+        console("Inicialização: 5. Instanciando widgets. Chamando Fábrica de Widgets")
         self._instanciar_widgets()
 
     # CONFIGURAÇÕES
@@ -122,7 +121,7 @@ class JanelaPrincipal(ctk.CTk):
         pos_y = (altura_tela - altura_corrigida) // 3
 
         return f"{pos_x}+{pos_y}"
-    def aplicar(self) -> None:
+    def aplicar_tema(self) -> None:
         """
         Usar as informações de 'Configs/interface.py' para configurar o tema global
         Configura o modo (claro/escuro) e o esquema de cores principal.
@@ -133,8 +132,8 @@ class JanelaPrincipal(ctk.CTk):
         console(f"Modo de cor selecionado: {self.janela.modo.capitalize()}")
 
         # 2. Define o tema de cores do programa
-        self.tema.aplicar_tema(f"{self.tema.tema_atual}")
-        console(f"Tema carregado: {self.tema.tema_atual}")
+        self.interface.tema.aplicar_tema(f"{self.interface.tema.tema_atual}")
+        console(f"Tema carregado: {self.interface.tema.tema_atual}")
 
     # WIDGETS
     def _instanciar_widgets(self) -> None:
@@ -143,19 +142,24 @@ class JanelaPrincipal(ctk.CTk):
         Cria e posiciona widgets principais da janela.
         """
 
+        self.fabrica = FabricaWidgets(self.interface.tema)
+
         # BOTÕES
-        self.botao_teste = FabricaWidgets.criar_botao(
+        self.botao_teste = self.fabrica.criar_botao(
             master=self,
             texto="Botão de Teste",
             interface=self.interface,
-            comando=lambda: print("Botão clicado!"),
-            x=100, y=100,
+            comando=lambda: self.atualizar_tema("Roxo"),  # 'lambda' para não executar antes de clicar no botão
+            x=100, y=100
         )
 
     # ESTILOS
-    def atualizar_estilos(self) -> None:
+    def atualizar_tema(self, novo_tema: str) -> None:
         """
         Metodo público.
         Atualiza estilos quando o tema mudar.
         O Controller poderá chamar este metodo após alterar o tema global.
         """
+        self.interface.tema.aplicar_tema(novo_tema)
+        self.fabrica.atualizar_tema_widgets()
+        console(f"Tema atualizado para: {novo_tema.capitalize()}")

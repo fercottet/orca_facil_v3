@@ -8,7 +8,7 @@ aplicando automaticamente o tema visual e posicionando-o na tela.
 
 from src.orca_facil.view.widgets.botao import Botao
 from src.orca_facil.view.widgets.base import console
-from src.configs.interface import InterfaceVisual
+from src.configs.interface import InterfaceVisual, Tema
 
 
 class FabricaWidgets:
@@ -17,10 +17,18 @@ class FabricaWidgets:
     Cada metodo estático cria um widget temático e o posiciona conforme parâmetros recebidos.
     """
 
+    def __init__(self, tema: Tema):
+        self.tema = tema  # Pega a instância dos temas
+        self._widgets = []  # Lista de widgets criados
+
+    def atualizar_tema_widgets(self):
+        for widget in self._widgets:
+            if hasattr(widget, "aplicar_estilo"):
+                widget.aplicar_estilo()
+
     # BOTÃO ==============================
-    @staticmethod
-    def criar_botao(master, texto: str, interface: InterfaceVisual, comando=None,
-                   x=None, y=None, largura=150, altura=60, **kwargs):
+    def criar_botao(self, master, texto: str, interface: InterfaceVisual, comando=None,
+                   x=None, y=None, largura=150, altura=50, **kwargs):
         """
         Cria um botão temático e o posiciona na janela.
 
@@ -43,5 +51,8 @@ class FabricaWidgets:
         # 2. Posiciona o botão
         botao.place(x=x, y=y, **kwargs)
 
-        # 3. Retorna o widget criado para eventual manipulação posterior
+        # 3. Adiciona o botão na lista de widgets
+        self._widgets.append(botao)
+
+        # 4. Retorna o widget criado para eventual manipulação posterior
         return botao

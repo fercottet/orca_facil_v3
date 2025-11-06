@@ -51,7 +51,7 @@ class Botao(BaseWidget, CTkButton):
         Pode ser chamado quando o tema é alterado em tempo de execução.
         """
 
-        console("Botão - Aplicando estilo")
+        console("Botão - Aplicando estilo ao botão")
 
         self.configure(
             fg_color=self.interface.tema.cor_principal,
@@ -59,4 +59,3 @@ class Botao(BaseWidget, CTkButton):
             corner_radius=self.interface.gerais.raio_canto,
             font=self.interface.fontes.fonte_botao
         )
-

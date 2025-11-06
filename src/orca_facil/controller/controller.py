@@ -46,16 +46,12 @@ class Controller:
         """
         console("Iniciando Controlador")
 
-        # Instancia a Janela Principal (View)
+        # 1. Instancia a Janela Principal (View)
         console("Instanciando View - JanelaPrincipal")
         self.view = JanelaPrincipal(interface=self.interface, janela=self.janelas)
         console("JanelaPrincipal instanciada")
 
-        # Aplica a configuração de cores e o tema ao programa
-        console("Aplicando Configuração: Tema de cores")
-        self.view.aplicar()
-
-        # Inicia o loop principal do programa com as configurações aplicadas
+        # 2. Inicia o loop principal do programa com as configurações aplicadas
         console("Inicialização concluída")
         console("Executando aplicação")
         print("\n========== - ========== - ========== - ==========\n")
