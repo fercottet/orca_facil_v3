@@ -17,7 +17,7 @@ class FabricaWidgets:
     Cada metodo estático cria um widget temático e o posiciona conforme parâmetros recebidos.
     """
 
-    # === BOTÃO ===
+    # BOTÃO ==============================
     @staticmethod
     def criar_botao(master, texto: str, interface: InterfaceVisual, comando=None,
                    x=None, y=None, largura=150, altura=60, **kwargs):

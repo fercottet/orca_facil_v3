@@ -6,6 +6,7 @@ Responsabilidade: Criar a Janela Principal do programa e organizar os widgets ne
 import customtkinter as ctk
 from src.configs.interface import Janelas, InterfaceVisual
 from src.orca_facil.view.widgets.fabrica import FabricaWidgets
+from src.configs.interface import Tema
 import os
 import sys
 
@@ -67,24 +68,25 @@ class JanelaPrincipal(ctk.CTk):
         console("Inicialização: 2.2. Instanciando as configurações da janela principal")
         self.janela: Janelas = janela  # Com notação de tipagem - Janelas
 
-        # 3. Configurações globais da Janela Principal
-        console("Inicialização: 3. Setando configurações globais da janela principal")
+        # 3. Instancia o tema do programa
+        self.tema = Tema()
+        console("Inicialização: 3. Instanciando classe temática")
+
+        # 4. Configurações globais da Janela Principal
+        console("Inicialização: 4. Setando configurações globais da janela principal")
         self.resizable(False, False)
         caminho_icone = os.path.join(caminho_base(), "assets", "icon", "icone.ico")
         self.iconbitmap(caminho_icone)
 
-        # 3.1. Define o título da Janela Principal (parte superior)
-        console("Inicialização: 3.1. Definindo título da Janela Principal")
+        # 4.1. Define o título da Janela Principal (parte superior)
+        console("Inicialização: 4.1. Definindo título da Janela Principal")
         self.title("Orça Fácil 3.0")
 
-        # 3.2. Define dimensões e posicionamento da Janela Principal (largura x altura + pos_horizontal + pos_vertical)
+        # 4.2. Define dimensões e posicionamento da Janela Principal (largura x altura + pos_horizontal + pos_vertical)
         dimensao = f"{self.interface.janelas.dimensao_principal}"
         posicao_central = self.centralizar()
-        console("Inicialização: 3.2. Dimensionando e centralizando a Janela Principal")
+        console("Inicialização: 4.2. Dimensionando e centralizando a Janela Principal")
         self.geometry(f"{dimensao}+{posicao_central}")
-
-        # 4. Configurar estilos personalizados
-        self._configurar_estilos()
 
         # 5. Criar widgets
         self._instanciar_widgets()
@@ -127,12 +129,12 @@ class JanelaPrincipal(ctk.CTk):
         """
 
         # 1. Define o modo de cor do programa (Light, Dark ou System)
-        console("Aplicando Configuração: Modo de cor")
         ctk.set_appearance_mode(self.janela.modo)
+        console(f"Modo de cor selecionado: {self.janela.modo.capitalize()}")
 
         # 2. Define o tema de cores do programa
-        console("Aplicando Configuração: Tema de cores")
-        ctk.set_default_color_theme("green")
+        self.tema.aplicar_tema(f"{self.tema.tema_atual}")
+        console(f"Tema carregado: {self.tema.tema_atual}")
 
     # WIDGETS
     def _instanciar_widgets(self) -> None:
@@ -151,19 +153,9 @@ class JanelaPrincipal(ctk.CTk):
         )
 
     # ESTILOS
-    def _configurar_estilos(self) -> None:
-        """
-        Metodo Privado.
-        Configura estilos globais (registrar ttk styles, fontes, etc.).
-        """
-
-        pass
     def atualizar_estilos(self) -> None:
         """
         Metodo público.
         Atualiza estilos quando o tema mudar.
         O Controller poderá chamar este metodo após alterar o tema global.
         """
-
-        # aqui vamos iterar por widgets ou reconfigurar o que for necessário
-        pass

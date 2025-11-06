@@ -39,7 +39,10 @@ class Botao(BaseWidget, CTkButton):
         self.comando = comando
         self.interface = interface
 
-        # 3. Aplica o estilo ao botão
+        # 3. Aplicar tema de cor
+        self.interface.tema.aplicar_tema(self.interface.tema.tema_atual)
+
+        # 4. Aplica o estilo geral ao botão
         self.aplicar_estilo()
 
     def aplicar_estilo(self) -> None:
@@ -51,8 +54,9 @@ class Botao(BaseWidget, CTkButton):
         console("Botão - Aplicando estilo")
 
         self.configure(
-            fg_color=self.interface.cores.verde_escuro,
-            hover_color=self.interface.cores.verde_claro,
+            fg_color=self.interface.tema.cor_principal,
+            hover_color=self.interface.tema.cor_principal_hover,
             corner_radius=self.interface.gerais.raio_canto,
-            font=(self.interface.fontes.fonte_botao, self.interface.fontes.tamanho_botao, "bold")
+            font=self.interface.fontes.fonte_botao
         )
+

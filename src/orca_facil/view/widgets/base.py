@@ -46,7 +46,10 @@ class BaseWidget(ABC):
 
         Ao herdar BaseWidget, o widget é obrigado a sobrescrever este metodo.
         """
-        pass
+
+        for widget in self._widgets:
+            if hasattr(widget, "aplicar_estilo"):
+                widget.aplicar_estilo()
 
     def atualizar(self) -> None:
         """

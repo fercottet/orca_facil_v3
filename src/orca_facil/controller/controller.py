@@ -5,7 +5,7 @@ controlando o fluxo da aplicação (inicialização, comandos e eventos).
 """
 
 from src.orca_facil.view.principal import JanelaPrincipal
-from src.configs.interface import InterfaceVisual, Janelas, Cores, Fontes, Gerais
+from src.configs.interface import InterfaceVisual, Janelas, Cores, Fontes, Gerais, Tema
 
 def console(mensagem) -> None:
     print(f"\033[94m[CONTROLLER] {mensagem}.\033[0m")  # Print em AZUL no console
@@ -29,13 +29,15 @@ class Controller:
         self.cores = Cores()
         self.fontes = Fontes()
         self.gerais = Gerais()
+        self.tema = Tema()
 
         # Junta tudo em um único objeto de interface
         self.interface = InterfaceVisual(
             janelas=self.janelas,
             cores=self.cores,
             fontes=self.fontes,
-            gerais=self.gerais
+            gerais=self.gerais,
+            tema=self.tema
         )
 
     def iniciar(self) -> None:
@@ -50,8 +52,8 @@ class Controller:
         console("JanelaPrincipal instanciada")
 
         # Aplica a configuração de cores e o tema ao programa
+        console("Aplicando Configuração: Tema de cores")
         self.view.aplicar()
-        console("Tema aplicado")
 
         # Inicia o loop principal do programa com as configurações aplicadas
         console("Inicialização concluída")
