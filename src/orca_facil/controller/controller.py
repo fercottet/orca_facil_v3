@@ -5,7 +5,7 @@ controlando o fluxo da aplicação (inicialização, comandos e eventos).
 """
 
 from src.orca_facil.view.principal import JanelaPrincipal
-from src.configs.interface import InterfaceVisual, Janelas, Cores, Fontes, Gerais, Tema
+from src.configs.interface import InterfaceVisual
 
 def console(mensagem) -> None:
     print(f"\033[94m[CONTROLLER] {mensagem}.\033[0m")  # Print em AZUL no console
@@ -25,13 +25,7 @@ class Controller:
         self.view = None  # Referência à View principal (criada no metodo iniciar) - Inicialização da variável
 
         # Cria as instâncias de configuração e junta tudo em um único objeto de interface
-        self.interface = InterfaceVisual(
-            janelas=Janelas(),
-            cores=Cores(),
-            fontes=Fontes(),
-            gerais=Gerais(),
-            tema=Tema()
-        )
+        self.interface = InterfaceVisual()
 
     def iniciar(self) -> None:
         """

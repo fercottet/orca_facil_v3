@@ -135,8 +135,8 @@ class InterfaceVisual:
     """
 
     # INSTÂNCIAS
-    janelas: Janelas
-    cores: Cores
-    fontes: Fontes
-    gerais: Gerais
-    tema: Tema
+    janelas: Janelas = field(default_factory=Janelas)
+    cores: Cores = field(default_factory=Cores)
+    fontes: Fontes = field(default_factory=Fontes)
+    gerais: Gerais = field(default_factory=Gerais)
+    tema: Tema = field(default_factory=Tema)
