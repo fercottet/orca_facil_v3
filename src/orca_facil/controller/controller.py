@@ -24,20 +24,13 @@ class Controller:
 
         self.view = None  # Referência à View principal (criada no metodo iniciar) - Inicialização da variável
 
-        # Cria as instâncias de configuração
-        self.janelas = Janelas()
-        self.cores = Cores()
-        self.fontes = Fontes()
-        self.gerais = Gerais()
-        self.tema = Tema()
-
-        # Junta tudo em um único objeto de interface
+        # Cria as instâncias de configuração e junta tudo em um único objeto de interface
         self.interface = InterfaceVisual(
-            janelas=self.janelas,
-            cores=self.cores,
-            fontes=self.fontes,
-            gerais=self.gerais,
-            tema=self.tema
+            janelas=Janelas(),
+            cores=Cores(),
+            fontes=Fontes(),
+            gerais=Gerais(),
+            tema=Tema()
         )
 
     def iniciar(self) -> None:
@@ -48,7 +41,7 @@ class Controller:
 
         # 1. Instancia a Janela Principal (View)
         console("Instanciando View - JanelaPrincipal")
-        self.view = JanelaPrincipal(interface=self.interface, janela=self.janelas)
+        self.view = JanelaPrincipal(interface=self.interface, janela=self.interface.janelas)
         console("JanelaPrincipal instanciada")
 
         # 2. Inicia o loop principal do programa com as configurações aplicadas
