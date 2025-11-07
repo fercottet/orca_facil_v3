@@ -142,7 +142,7 @@ class JanelaPrincipal(ctk.CTk):
         Cria e posiciona widgets principais da janela.
         """
 
-        self.fabrica = FabricaWidgets(self.interface.tema)
+        self.fabrica = FabricaWidgets()
 
         # BOTÕES
         self.botao_teste = self.fabrica.criar_botao(
