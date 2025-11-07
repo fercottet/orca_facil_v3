@@ -86,6 +86,14 @@ class Tema:
 
     # Cria a lista de temas disponíveis
     lista_tema: list[str] = field(default_factory=lambda: ["Azul", "Verde", "Roxo"])
+    """
+    O parâmetro default_factory do field() espera uma função (callable)
+    Isto é, algo que possa ser chamado para gerar o valor padrão.
+    Ou seja, ele precisa de uma função que retorne o valor desejado.
+    lambda: ["Azul", "Verde", "Roxo"] é uma função anônima.
+    Ela será chamada quando o objeto for criado, retornando uma nova lista.
+    ["Azul", "Verde", "Roxo"] é apenas uma lista — um objeto pronto, não chamável.
+    """
 
     # Define o tema atual
     tema_atual: str = "Verde"
@@ -134,7 +142,7 @@ class InterfaceVisual:
         Esta classe não aplica temas nem executa lógica visual — apenas fornece os dados necessários.
     """
 
-    # INSTÂNCIAS
+    # Cria instâncias próprias para cada configuração visual, evitando que alterações em uma afetem as demais.
     janelas: Janelas = field(default_factory=Janelas)
     cores: Cores = field(default_factory=Cores)
     fontes: Fontes = field(default_factory=Fontes)
