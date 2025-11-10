@@ -48,9 +48,3 @@ class BaseWidget(ABC):
         """
         pass
 
-    def atualizar(self) -> None:
-        """
-        Metodo opcional para forçar atualização visual, de atributo, ou conteúdo.
-        Pode ser sobrescrito quando necessário.
-        """
-        pass

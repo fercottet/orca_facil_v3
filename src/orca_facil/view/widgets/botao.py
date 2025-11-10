@@ -39,10 +39,7 @@ class Botao(BaseWidget, CTkButton):
         self.comando = comando
         self.interface = interface
 
-        # 3. Aplicar tema de cor
-        self.interface.tema.aplicar_tema(self.interface.tema.tema_atual)
-
-        # 4. Aplica o estilo geral ao botão
+        # 3. Aplica o estilo geral ao botão
         self.aplicar_estilo()
 
     def aplicar_estilo(self) -> None:

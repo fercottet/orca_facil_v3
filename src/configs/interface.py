@@ -103,9 +103,27 @@ class Tema:
     cor_principal_hover: str = f"{cor.verde_claro}"
     cor_destaque: str = f"{cor.laranja}"
 
+    # Define as cores globais conforme o tema escolhido, sem alterar diretamente os widgets.
     def aplicar_tema(self, tema: str = f"{tema_atual}") -> None:
         """
-        Permite redefinir o tema inteiro alterando a cor-base (por exemplo: 'verde', 'azul', etc.)
+        Redefine as cores-base do programa conforme o tema selecionado.
+
+        Responsabilidade:
+            Este metodo atua no nível de configuração global, ajustando
+            os valores de cor associados ao tema ativo (ex.: Verde, Azul, Roxo).
+            Ele não altera diretamente a aparência dos widgets — apenas
+            atualiza os atributos de cor que os widgets usam ao aplicar
+            o seu próprio estilo.
+
+        Uso típico:
+            Chamado quando o usuário troca o tema do programa.
+            Após a chamada, cada widget deve atualizar a sua aparência
+            executando o metodo 'aplicar_estilo()'.
+
+        Args:
+            tema (str): Nome do tema a ser aplicado. Caso omitido, mantém o tema atual.
+        Raises:
+            ValueError: Se o nome informado não corresponder a nenhum tema disponível.
         """
 
         if tema:
