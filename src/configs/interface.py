@@ -25,6 +25,7 @@ class Janelas:
 @dataclass
 class Cores:
     """Relaciona nomes de cores com seus respectivos códigos hexadecimais para facilitar a leitura."""
+    amarelo: str = "yellow"
     azul_claro: str = "#4CABFF"
     azul_escuro: str = "#1F6EB3"
     laranja: str = "#C25912"
@@ -79,8 +80,18 @@ class Fontes:
     def fonte_label(self) -> tuple:
         """Padroniza tipo, tamanho e negrito dos labels"""
         return self.tipo_label, self.tamanho_label, self.negrito_label
+    @staticmethod
+    def fonte_status() -> tuple:
+        """Muda a cor do texto do label de Status"""
+        janelas = Janelas()
+        cores = Cores()
 
+        if janelas.modo == "dark":
+            cor_texto_status = cores.amarelo
+        else:
+            cor_texto_status = cores.laranja
 
+        return cor_texto_status
 @dataclass
 class Gerais:
     """ Define outras características dos widgets."""

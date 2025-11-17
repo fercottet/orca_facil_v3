@@ -274,7 +274,7 @@ class JanelaPrincipal(ctk.CTk):
                 texto="PRONTO PARA COMEÇAR",
                 interface=self.interface,
                 x=1300, y=130
-            ).configure(height=50, anchor="center", text_color=self.interface.cores.laranja)
+            ).configure(height=50, anchor="center", text_color=self.interface.fontes.fonte_status())
 
             return self.label_orcamento_numero, self.label_perfil, self.label_cliente
 
