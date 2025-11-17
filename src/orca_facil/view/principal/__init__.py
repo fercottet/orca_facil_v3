@@ -195,7 +195,7 @@ class JanelaPrincipal(ctk.CTk):
 
             return (self.botao_novo_orcamento, self.botao_adicionar_arquivos, self.botao_carregar_perfil,
                     self.botao_tamanhos_e_quantidades, self.botao_configuracoes, self.botao_gerar_pdf)
-        def labels():
+        def labels_precificacao_texto():
             self.label_valor_total = self.fabrica.criar_label(
                 master=self,
                 texto="VALOR TOTAL: R$",
@@ -247,6 +247,43 @@ class JanelaPrincipal(ctk.CTk):
 
             return (self.label_valor_total, self.label_valor_parcelado, self.label_em, self.label_parcelas_de,
                     self.label_pix_dinheiro, self.label_imposto_nota, self.label_porcentagem_imposto_nota)
+        def labels_informacoes_texto():
+            self.label_orcamento_numero = self.fabrica.criar_label(
+                master=self,
+                texto="ORÇAMENTO Nº:",
+                interface=self.interface,
+                x=1300, y=40
+            ).configure(width=145, height=30, anchor="w")
+
+            self.label_perfil = self.fabrica.criar_label(
+                master=self,
+                texto="PERFIL:",
+                interface=self.interface,
+                x=1300, y=70
+            ).configure(height=30, anchor="w")
+
+            self.label_cliente = self.fabrica.criar_label(
+                master=self,
+                texto="CLIENTE:",
+                interface=self.interface,
+                x=1300, y=100
+            ).configure(height=30, anchor="w")
+
+            self.label_status = self.fabrica.criar_label(
+                master=self,
+                texto="PRONTO PARA COMEÇAR",
+                interface=self.interface,
+                x=1300, y=130
+            ).configure(height=50, anchor="center", text_color=self.interface.cores.laranja)
+
+            return self.label_orcamento_numero, self.label_perfil, self.label_cliente
+
+        def labels():
+            self.labels_precificacao_texto = labels_precificacao_texto()
+            #self.labels_precificacao_saida = labels_precificacao_saida()
+            self.labels_informacoes_texto = labels_informacoes_texto()
+
+            return labels_precificacao_texto()
 
         # Chama a função de criação dos Widgets
         self.botoes = botoes()
