@@ -70,6 +70,16 @@ class Fontes:
         """Padroniza tipo, tamanho e negrito dos botões"""
         return self.tipo_botao, self.tamanho_botao, self.negrito_botao
 
+    # LABELS =============================================
+    tipo_label: str = tipo_geral
+    tamanho_label: int = 14
+    negrito_label: str = "bold"
+
+    @property
+    def fonte_label(self) -> tuple:
+        """Padroniza tipo, tamanho e negrito dos labels"""
+        return self.tipo_label, self.tamanho_label, self.negrito_label
+
 
 @dataclass
 class Gerais:

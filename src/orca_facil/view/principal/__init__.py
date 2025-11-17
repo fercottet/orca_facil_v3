@@ -195,9 +195,62 @@ class JanelaPrincipal(ctk.CTk):
 
             return (self.botao_novo_orcamento, self.botao_adicionar_arquivos, self.botao_carregar_perfil,
                     self.botao_tamanhos_e_quantidades, self.botao_configuracoes, self.botao_gerar_pdf)
+        def labels():
+            self.label_valor_total = self.fabrica.criar_label(
+                master=self,
+                texto="VALOR TOTAL: R$",
+                interface=self.interface,
+                x=395, y=30
+            ).configure(font=(self.interface.fontes.tipo_geral, 20, "bold"), anchor="e")
+
+            self.label_valor_parcelado = self.fabrica.criar_label(
+                master=self,
+                texto="VALOR PARCELADO: R$",
+                interface=self.interface,
+                x=395, y=77.50
+            ).configure(anchor="e")
+
+            self.label_em = self.fabrica.criar_label(
+                master=self,
+                texto="EM",
+                interface=self.interface,
+                x=715, y=77.50
+            ).configure(width=40)
+
+            self.label_parcelas_de = self.fabrica.criar_label(
+                master=self,
+                texto="PARCELAS DE R$",
+                interface=self.interface,
+                x=795, y=77.50
+            ).configure(width=160, anchor="e")
+
+            self.label_pix_dinheiro = self.fabrica.criar_label(
+                master=self,
+                texto="PIX / DINHEIRO: R$",
+                interface=self.interface,
+                x=395, y=125
+            ).configure(anchor="e")
+
+            self.label_imposto_nota = self.fabrica.criar_label(
+                master=self,
+                texto="IMPOSTO NOTA: R$",
+                interface=self.interface,
+                x=395, y=172.50
+            ).configure(anchor="e")
+
+            self.label_porcentagem_imposto_nota = self.fabrica.criar_label(
+                master=self,
+                texto="% IMPOSTO NOTA:",
+                interface=self.interface,
+                x=795, y=172.50
+            ).configure(width=160, anchor="e")
+
+            return (self.label_valor_total, self.label_valor_parcelado, self.label_em, self.label_parcelas_de,
+                    self.label_pix_dinheiro, self.label_imposto_nota, self.label_porcentagem_imposto_nota)
 
         # Chama a função de criação dos Widgets
         self.botoes = botoes()
+        self.labels = labels()
 
     # ESTILOS
     def atualizar_tema(self, novo_tema: str) -> None:

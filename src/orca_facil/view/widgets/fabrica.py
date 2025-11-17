@@ -7,6 +7,7 @@ aplicando automaticamente o tema visual e posicionando-o na tela.
 """
 
 from src.orca_facil.view.widgets.botao import Botao
+from src.orca_facil.view.widgets.label import Label
 from src.orca_facil.view.widgets.base import console
 from src.configs.interface import InterfaceVisual
 
@@ -55,3 +56,34 @@ class FabricaWidgets:
 
         # 4. Retorna o widget criado para eventual manipulação posterior
         return botao
+
+    # LABEL ==============================
+    def criar_label(self, master, texto: str, interface: InterfaceVisual,
+                    x=None, y=None, largura=200, altura=47.50, **kwargs):
+        """
+        Cria um botão temático e o posiciona na janela.
+
+        :param: master: Container (janela, frame, etc.) onde o botão será inserido.
+        :param: texto: Texto exibido no botão.
+        :param: interface: Instância de InterfaceVisual para aplicar estilo.
+        :param: comando: Função a ser executada no clique.
+        :param: x: Posição absoluta horizontal em relação a margem esquerda da janela (master).
+        :param: y: Posição absoluta vertical em relação a margem superior da janela (master).
+        :param: largura: Largura do botão (opcional).
+        :param: altura: Altura do botão (opcional).
+        :param: **kwargs: Parâmetros adicionais repassados ao Botao (como corner_radius, etc.).
+        """
+
+        console(f"Fábrica: Criando label {texto}")
+
+        # 1. Cria o label
+        label = Label(master, texto, interface, width=largura, height=altura, **kwargs)
+
+        # 2. Posiciona o label
+        label.place(x=x, y=y, **kwargs)
+
+        # 3. Adiciona o label na lista de widgets
+        self._widgets.append(label)
+
+        # 4. Retorna o widget criado para eventual manipulação posterior
+        return label
