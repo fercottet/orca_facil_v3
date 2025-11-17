@@ -13,7 +13,7 @@ class Janelas:
     modo: str = field(default="dark")  # 'light' (claro) ou 'dark' (escuro)
 
     # DIMENSÕES
-    largura_principal: int = 1440
+    largura_principal: int = 1540
     altura_principal: int = 780
 
     @property

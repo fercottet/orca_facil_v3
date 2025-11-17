@@ -144,14 +144,60 @@ class JanelaPrincipal(ctk.CTk):
 
         self.fabrica = FabricaWidgets()
 
-        # BOTÕES
-        self.botao_teste = self.fabrica.criar_botao(
-            master=self,
-            texto="Botão de Teste",
-            interface=self.interface,
-            comando=lambda: self.atualizar_tema("Roxo"),  # 'lambda' para não executar antes de clicar no botão
-            x=100, y=100
-        )
+        def botoes():
+            self.botao_novo_orcamento = self.fabrica.criar_botao(
+                master=self,
+                texto="Novo\nOrçamento",
+                interface=self.interface,
+                comando=lambda: "",  # 'lambda' para não executar antes de clicar no botão
+                x=25, y=30
+            )
+
+            self.botao_adicionar_arquivos = self.fabrica.criar_botao(
+                master=self,
+                texto="Adicionar\nArquivos",
+                interface=self.interface,
+                comando=lambda: "",  # 'lambda' para não executar antes de clicar no botão
+                x=200, y=30
+            )
+
+            self.botao_carregar_perfil = self.fabrica.criar_botao(
+                master=self,
+                texto="Carregar Perfil",
+                interface=self.interface,
+                comando=lambda: "",  # 'lambda' para não executar antes de clicar no botão
+                x=25, y=100
+            )
+
+            self.botao_tamanhos_e_quantidades = self.fabrica.criar_botao(
+                master=self,
+                texto="Tamanhos e\nQuantidades",
+                interface=self.interface,
+                comando=lambda: "",  # 'lambda' para não executar antes de clicar no botão
+                x=200, y=100
+            )
+
+            self.botao_configuracoes = self.fabrica.criar_botao(
+                master=self,
+                texto="Configurações",
+                interface=self.interface,
+                comando=lambda: "",  # 'lambda' para não executar antes de clicar no botão
+                x=25, y=170
+            )
+
+            self.botao_gerar_pdf = self.fabrica.criar_botao(
+                master=self,
+                texto="Gerar PDF",
+                interface=self.interface,
+                comando=lambda: "",  # 'lambda' para não executar antes de clicar no botão
+                x=200, y=170
+            )
+
+            return (self.botao_novo_orcamento, self.botao_adicionar_arquivos, self.botao_carregar_perfil,
+                    self.botao_tamanhos_e_quantidades, self.botao_configuracoes, self.botao_gerar_pdf)
+
+        # Chama a função de criação dos Widgets
+        self.botoes = botoes()
 
     # ESTILOS
     def atualizar_tema(self, novo_tema: str) -> None:
