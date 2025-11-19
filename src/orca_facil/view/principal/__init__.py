@@ -330,12 +330,17 @@ class JanelaPrincipal(ctk.CTk):
                 ).configure(height=50, anchor="center", text_color=self.interface.fontes.fonte_status())
 
                 return self.label_orcamento_numero, self.label_perfil, self.label_cliente
+            def labels_saida_informacoes():
+
+                return ""
 
             self.labels_texto_precificacao = labels_texto_precificacao()
             self.labels_saida_precificacao = labels_saida_precificacao()
             self.labels_texto_informacoes = labels_texto_informacoes()
+            self.labels_saida_informacoes = labels_saida_informacoes()
 
-            return self.labels_texto_precificacao, self.labels_saida_precificacao, self.labels_texto_informacoes
+            return (self.labels_texto_precificacao, self.labels_saida_precificacao,
+                    self.labels_texto_informacoes, self.labels_saida_informacoes)
 
         # Chama a função de criação dos Widgets
         self.botoes = botoes()
