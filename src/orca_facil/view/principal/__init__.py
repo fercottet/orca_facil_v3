@@ -68,7 +68,8 @@ class JanelaPrincipal(ctk.CTk):
         self.janela: Janelas = janela  # Com notação de tipagem - Janelas
 
         # 3. Instancia o tema do programa
-        self.interface.tema.aplicar_tema(self.interface.tema.tema_atual)
+        console("Inicialização: 3. Aplicando tema")
+        self.aplicar_tema()
 
         # 4. Configurações globais da Janela Principal
         console("Inicialização: 4. Setando configurações globais da janela principal")
@@ -94,7 +95,7 @@ class JanelaPrincipal(ctk.CTk):
     def obter_dpi_sistema(self) -> float:
         """Retorna o fator de escala do monitor principal (1.0 = 100%)."""
 
-        console("Inicialização - DPI: Obtendo DPI da tela (Configuração de escala de tela do Windows)")
+        console("Inicialização - 4.1.2.1. DPI: Obtendo DPI da tela (Configuração de escala de tela do Windows)")
         dpi = self.winfo_fpixels('1i')  # converte "1i" (1 polegada) em pixels reais
 
         return dpi / 96  # 96 dpi = escala 100% - padrão do Windows
@@ -102,21 +103,21 @@ class JanelaPrincipal(ctk.CTk):
         """Centralizada a Janela Principal na tela"""
 
         # 1. Coleta as dimensões da tela
-        console("Inicialização - Centralização: Coletando dimensões da tela")
+        console("Inicialização - 4.1.1. Centralização: Coletando dimensões da tela")
         largura_tela = self.winfo_screenwidth()
         altura_tela = self.winfo_screenheight()
 
         # 2. Obtém o ajuste da configuração de escala de tela do Windows
-        console("Inicialização - Centralização: Ajustando DPI do sistema para tela")
+        console("Inicialização - 4.1.2. Centralização: Ajustando DPI do sistema para tela")
         dpi_ajustado = self.obter_dpi_sistema()
 
         # 3. Corrigindo largura e altura da tela conforme o DPI
-        console("Inicialização - Centralização: Corrigindo dimensões pelo DPI do sistema")
+        console("Inicialização - 4.1.3. Centralização: Corrigindo dimensões pelo DPI do sistema")
         largura_corrigida = int(self.janela.largura_principal * dpi_ajustado)
         altura_corrigida = int(self.janela.altura_principal * dpi_ajustado)
 
         # 4. Calcula a posição central
-        console("Inicialização - Centralização: Calculando posição central")
+        console("Inicialização - 4.1.4. Centralização: Calculando posição central")
         pos_x = (largura_tela - largura_corrigida) // 2
         pos_y = (altura_tela - altura_corrigida) // 3
 
@@ -129,11 +130,11 @@ class JanelaPrincipal(ctk.CTk):
 
         # 1. Define o modo de cor do programa (Light, Dark ou System)
         ctk.set_appearance_mode(self.janela.modo)
-        console(f"Modo de cor selecionado: {self.janela.modo.capitalize()}")
+        console(f"[VIEW] Inicialização: 3.1. TEMA - Modo de cor selecionado: {self.janela.modo.capitalize()}")
 
         # 2. Define o tema de cores do programa
         self.interface.tema.aplicar_tema(f"{self.interface.tema.tema_atual}")
-        console(f"Tema carregado: {self.interface.tema.tema_atual}")
+        console(f"[VIEW] Inicialização: 3.2. TEMA - Tema de cores carregado: {self.interface.tema.tema_atual}")
 
     # WIDGETS
     def _instanciar_widgets(self) -> None:
