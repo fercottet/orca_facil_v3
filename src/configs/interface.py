@@ -28,6 +28,7 @@ class Cores:
     amarelo: str = "yellow"
     azul_claro: str = "#4CABFF"
     azul_escuro: str = "#1F6EB3"
+    cinza_claro: str = "#D1D2D4"
     laranja: str = "#C25912"
     roxo_claro: str = "#7B2CBF"
     roxo_escuro: str = "#5A189A"
